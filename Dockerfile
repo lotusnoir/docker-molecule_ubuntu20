@@ -1,4 +1,4 @@
-FROM debian:10
+FROM ubuntu:20.04
 LABEL maintainer="lotusnoir"
 
 ENV container docker
