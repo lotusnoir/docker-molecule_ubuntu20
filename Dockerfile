@@ -10,6 +10,8 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc /usr/share/man \
     && rm -f /lib/systemd/system/multi-user.target.wants/* \
+    /lib/systemd/system/systemd*udev* \
+    /lib/systemd/system/getty.target \
     /etc/systemd/system/*.wants/* \
     /lib/systemd/system/local-fs.target.wants/* \
     /lib/systemd/system/sockets.target.wants/*udev* \
@@ -17,5 +19,5 @@ RUN apt-get update \
     /lib/systemd/system/sysinit.target.wants/systemd-tmpfiles-setup* \
     /lib/systemd/system/systemd-update-utmp*
 
-VOLUME [ "/sys/fs/cgroup" ]
-CMD ["/lib/systemd/systemd"]
+VOLUME ["/sys/fs/cgroup", "/tmp", "/run"]
+ENTRYPOINT ["/lib/systemd/systemd"]
