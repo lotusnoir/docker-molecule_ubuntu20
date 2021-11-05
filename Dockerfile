@@ -6,7 +6,7 @@ ENV LC_ALL C
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends systemd systemd-sysv sudo python3-apt python3-pip \
+    && apt-get install -y --no-install-recommends systemd systemd-sysv sudo python3-apt python3-pip iproute2 net-tools \
     && python3 -m pip install --no-cache-dir --upgrade pip \
     && python3 -m pip install --no-cache-dir ansible cryptography jmespath \
     && apt-get clean \
